@@ -13,15 +13,15 @@ class HomePage extends BasePage {
     return $(".//a[text()='Go To Registration ']");
   }
 
-  footerText(text) {
+  getFooterText(text) {
     return $(`.//span[text()='${text}']`);
   }
 
-  button(text) {
+  getButton(text) {
     return $(`.//h5[text()='${text}']`);
   }
 
-  title(title) {
+  getTitle(title) {
     return $(`.//div[@class="main-header"][text()="${title}"]`);
   }
 }

@@ -21,8 +21,8 @@ Then(/^I can see Selenium training image$/, async () => {
 });
 
 Then(/^I can see "(.*)" footer text$/, async (text) => {
-  await homePage.footerText(text).waitForDisplayed();
-  expect(await homePage.footerText(text).isDisplayed()).to.equal(true);
+  await homePage.getFooterText(text).waitForDisplayed();
+  expect(await homePage.getFooterText(text).isDisplayed()).to.equal(true);
 });
 
 Then(/^I can see "(.*)" title$/, async (title) => {
@@ -51,12 +51,12 @@ Then(/^I expect to be on Selenium page with "(.*)" title$/, async (title) => {
 });
 
 When(/^I click on (.*)$/, async (text) => {
-  await homePage.button(text).scrollIntoView();
-  await homePage.button(text).click();
+  await homePage.getButton(text).scrollIntoView();
+  await homePage.getButton(text).click();
   await browser.pause(1000);
 });
 
-Then(/^I expect be on page with (.*)$/, async (title) => {
-  await homePage.title(title).scrollIntoView();
-  expect(await homePage.title(title).isDisplayed()).to.equal(true);
+Then(/^I expect to be on page with (.*)$/, async (title) => {
+  await homePage.getTitle(title).scrollIntoView();
+  expect(await homePage.getTitle(title).isDisplayed()).to.equal(true);
 });
