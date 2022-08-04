@@ -1,4 +1,4 @@
-const { Before, Given, When, Then } = require("@wdio/cucumber-framework");
+const { Given, When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
 const elementsPage = require("../pageobject/elements.page");
 
@@ -21,6 +21,8 @@ When(/^I fill inavalid data "(.*)" in "(.*)" field$/, async (data, field) => {
 });
 
 When(/^I click "(.*)" button$/, async (text) => {
+  //
+  await elementsPage.getSubmitButton(text).waitForDisplayed();
   await elementsPage.getSubmitButton(text).click();
 });
 
