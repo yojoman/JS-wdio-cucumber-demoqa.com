@@ -1,7 +1,7 @@
 @forms
 Feature: https://demoqa.com forms page
 
-    Scenario: 1. Forms page can be filled and send
+    Scenario: 1. Forms page functionality
         Given I am on the "automation-practice-form" page
         Then I expect to see Student Registration Form
         When I type "John" in "First Name" field
@@ -26,5 +26,5 @@ Feature: https://demoqa.com forms page
         When I push Submit button
         Then I expect to see window with "Thanks for submitting the form" title contains submitted form
         When I click "Close" button
-        Then I expect the see the window has disappeared
+        Then I expect to see the window has disappeared
 
