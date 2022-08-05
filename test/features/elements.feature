@@ -1,7 +1,8 @@
 @elements
 Feature: https://demoqa.com elements page
 
-    Scenario: 1. Text Box can be filled in and send
+    @text-box
+    Scenario: 1. Text Box page functionality
         Given I am on the "text-box" page
         When I fill "John Snow" in "userName" field
         Then I expect to see "John Snow" in "userName" field
@@ -21,7 +22,8 @@ Feature: https://demoqa.com elements page
         And I click "Submit" button
         Then I expect to see "userEmail" field becames red
 
-    Scenario: 2. All buttons can be clicked and show corresponding messages
+    @buttons
+    Scenario: 2. Buttons page functionality
         Given I am on the "buttons" page
         When I double click on "Double Click Me" button
         Then I expect to see "You have done a double click" message
