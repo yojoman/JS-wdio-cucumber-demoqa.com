@@ -30,7 +30,7 @@ When(
     await formsPage.dateOfBirthInput.click();
     await formsPage.yearSelectButton.selectByAttribute("value", year);
     await formsPage.monthSelectButton.selectByVisibleText(month);
-    await formsPage.dayOfBirth(date).click();
+    await formsPage.getDayOfBirth(date).click();
   }
 );
 
@@ -77,7 +77,7 @@ Then(
   }
 );
 
-Then(/^I expect the see the window has disappeared$/, async () => {
+Then(/^I expect to see the window has disappeared$/, async () => {
   await formsPage.submittedForm.waitForDisplayed({ reverse: true });
   expect(await formsPage.submittedForm.isDisplayed()).to.equal(false);
 });

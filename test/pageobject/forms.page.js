@@ -61,7 +61,7 @@ class FormsPage extends BasePage {
     return $(`.//div[text()="${form}"]`);
   }
 
-  dayOfBirth(date) {
+  getDayOfBirth(date) {
     return $(`.//div[text()=${date}]`);
   }
 
