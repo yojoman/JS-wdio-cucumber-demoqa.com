@@ -1,6 +1,7 @@
 @home
 Feature: https://demoqa.com home page
 
+    @home_main
     Scenario: 1.Page contains proper data
         Given I am on the home page
         Then I can see logo image
@@ -12,7 +13,7 @@ Feature: https://demoqa.com home page
         When I press Selenium logo
         Then I expect to be on Selenium page with "Tools QA - Selenium Training " title
 
-
+    @home_buttons
     Scenario Outline: 2. All buttons can be clicked and open corresponding pages
         Given I am on the home page
         When I click on <button>
