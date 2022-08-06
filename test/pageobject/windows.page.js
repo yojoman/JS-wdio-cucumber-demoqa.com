@@ -21,4 +21,5 @@ class WindowsPage extends BasePage {
     return $(`.//button[text()='${text}']`);
   }
 }
+
 module.exports = new WindowsPage();
