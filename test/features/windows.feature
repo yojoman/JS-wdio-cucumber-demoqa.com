@@ -3,7 +3,7 @@ Feature: https://demoqa.com windows page
 
     @browser-windows
     Scenario: 1. Browser Windows page functionality
-        Given I am on the "browser-windows" page
+        Given I am on the "Browser-windows" page
         Then I expect to see "New Tab" button
         And I expect to see "New Window" button
         And I expect to see "New Window Message" button
@@ -20,7 +20,7 @@ Feature: https://demoqa.com windows page
 
     @modal
     Scenario: 2. Modal Dialogs page functionality
-        Given I am on the "modal-dialogs" page
+        Given I am on the "Modal-dialogs" page
         Then I expect to see "Small modal" button
         And I expect to see "Large modal" button
         When I click "Small modal" button

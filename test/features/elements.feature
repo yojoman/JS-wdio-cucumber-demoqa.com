@@ -3,7 +3,7 @@ Feature: https://demoqa.com elements page
 
     @text-box
     Scenario: 1. Text Box page functionality
-        Given I am on the "text-box" page
+        Given I am on the "Text-box" page
         When I fill "John Snow" in "userName" field
         Then I expect to see "John Snow" in "userName" field
         When I fill "johnsnow@gmail.com" in "userEmail" field
@@ -24,7 +24,7 @@ Feature: https://demoqa.com elements page
 
     @buttons
     Scenario: 2. Buttons page functionality
-        Given I am on the "buttons" page
+        Given I am on the "Buttons" page
         When I double click on "Double Click Me" button
         Then I expect to see "You have done a double click" message
         When I right click on "Right Click Me" button

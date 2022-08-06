@@ -2,7 +2,7 @@
 Feature: https://demoqa.com forms page
 
     Scenario: 1. Forms page functionality
-        Given I am on the "automation-practice-form" page
+        Given I am on the "Automation-practice-form" page
         Then I expect to see Student Registration Form
         When I type "John" in "First Name" field
         Then I expect to see "John" text in "First Name" field

@@ -6,7 +6,8 @@ class ElementsPage extends BasePage {
   }
 
   async open(text) {
-    return await browser.url(`/${text}`);
+    const textLowered = text.toLowerCase();
+    return await browser.url(`/${textLowered}`);
   }
 
   getTextBoxField(data) {
