@@ -9,6 +9,7 @@ class WidgetPage extends BasePage {
     const tabLowered = tab.toLowerCase();
     return $(`.//div[contains(@id, '${tabLowered}')]`);
   }
+  
   getTab(text) {
     return $(`.//a[text()="${text}"]`);
   }
