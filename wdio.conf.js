@@ -52,11 +52,11 @@ exports.config = {
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
-      maxInstances: 5,
+      maxInstances: 10,
       //
       browserName: "chrome",
       acceptInsecureCerts: true,
-      // If outputDir is provided WebdriverIO can capture driver session logs
+      // If outputDir is provided WebdriverIO can capture driver session logslogger
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
       // excludeDriverLogs: ['bugreport', 'server'],
@@ -132,6 +132,19 @@ exports.config = {
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: ["spec"],
+
+  reporters: [
+    [
+      "allure",
+      {
+        outputDir: "reports/allure-results",
+
+        disableWebdriverStepsReporting: true,
+
+        disableWebdriverScreenshotsReporting: true,
+      },
+    ],
+  ],
 
   //
   // If you are using Cucumber you need to specify the location of your step definitions.
