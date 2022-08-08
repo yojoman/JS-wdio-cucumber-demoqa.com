@@ -13,7 +13,7 @@ Feature: https://demoqa.com book store page
         Given I am on the "Books" page
         Then I expect to see items on the page
         When I type "JavaScript" in search field
-        # Then I expect to see following books in search results
+        Then I expect to see following books in search results
 
     # When I back on previous page
     # And I click "You Don't Know JS" book

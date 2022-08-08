@@ -17,9 +17,9 @@ class BookStorePage extends BasePage {
     return /^\d{13}$/i.test(number);
   }
 
-  // get bookList() {
-  //   return $$("div[class='rt-tbody'] div div div div");
-  // }
+  get bookList() {
+    return $$("div[class='rt-tbody'] div div div div");
+  }
 
   // async getBookListText() {
   //   const result = await Promise.all(
@@ -29,11 +29,11 @@ class BookStorePage extends BasePage {
   //   );
   // }
 
-  // getBookListText() {
-  //   const booksListArr = [];
-  //   this.bookList.map((element) => booksListArr.push(element.getText()));
-  //   return booksListArr;
-  // }
+  getBookListText() {
+    const booksListArr = [];
+    this.bookList.map((element) => booksListArr.push(element.getText()));
+    return booksListArr;
+  }
 
   getBookName(book) {
     return $(`.//span[contains(@id,"see-book-${book}")]`);

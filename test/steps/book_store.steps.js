@@ -23,8 +23,15 @@ When(/^I type "(.*)" in search field$/, async (text) => {
   await browser.pause(3000);
 });
 
-// Then(/^I expect to see following books in search results$/, async () => {});
-
+Then(/^I expect to see following books in search results$/, async () => {
+  const booksList = bookStorePage.getBookListText();
+  expect(booksList).to.deep.equal([
+    "Learning JavaScript Design Patterns",
+    "Speaking JavaScript",
+    "Programming JavaScript Applications",
+    "Eloquent JavaScript, Second Edition",
+  ]);
+});
 
 // When(/^I back on previous page$/, async () => {
 //   await browser.back();
@@ -44,7 +51,6 @@ When(/^I type "(.*)" in search field$/, async (text) => {
 //   ]);
 // });
 
-
 When(/^I open (.*)$/, async (book) => {
   await bookStorePage.getBookName(book).scrollIntoView();
   await bookStorePage.getBookName(book).click();
@@ -52,7 +58,7 @@ When(/^I open (.*)$/, async (book) => {
 
 Then(/^I expect to see book with (.*)$/, async (subtitle) => {
   await bookStorePage.getBookISubTitle(subtitle).scrollIntoView();
-  expect(
-    await bookStorePage.getBookISubTitle(subtitle).isDisplayed()
-  ).is.equal(true);
+  expect(await bookStorePage.getBookISubTitle(subtitle).isDisplayed()).is.equal(
+    true
+  );
 });
