@@ -13,6 +13,10 @@ class HomePage extends BasePage {
     return $(".//a[text()='Go To Registration ']");
   }
 
+  async open() {
+      return await browser.url("/");
+    }
+
   getFooterText(text) {
     return $(`.//span[text()='${text}']`);
   }
