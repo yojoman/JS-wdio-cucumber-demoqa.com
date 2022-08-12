@@ -14,19 +14,18 @@ Feature: https://demoqa.com book store page
         Then I expect to see items on the page
         When I type "JavaScript" in search field
         Then I expect to see following books in search results
-
-    # When I back on previous page
-    # And I click "You Don't Know JS" book
-    # Then I expect ISBN matches defined format
-    # When I back on previous page
-    # Then I expect to see all books on the page
-
+            | books                               |
+            | Learning JavaScript Design Patterns |
+            | Speaking JavaScript                 |
+            | Programming JavaScript Applications |
+            | Eloquent JavaScript, Second Edition |
 
     @desc
     Scenario Outline: 3. Book description page functionality
-        Given I am on the "Books" page
-        When I open <book>
+        When I load "Books" page
+        And I open <book>
         Then I expect to see book with <subtitle>
+        When I back on previous page
 
         Examples:
             | book                                      | subtitle                                                          |
