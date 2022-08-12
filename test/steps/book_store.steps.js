@@ -1,9 +1,10 @@
 const { When, Then } = require("@wdio/cucumber-framework");
-const { expect } = require("chai");
+const { expect, assert } = require("chai");
 const bookStorePage = require("../pageobject/book_store.page");
 
 When(/^I click "(.*)" book$/, async (book) => {
   await bookStorePage.getBookName(book).scrollIntoView();
+  await bookStorePage.getBookName(book).waitForDisplayed();
   await bookStorePage.getBookName(book).click();
 });
 
@@ -20,44 +21,28 @@ Then(/^I expect to see items on the page$/, async () => {
 When(/^I type "(.*)" in search field$/, async (text) => {
   await bookStorePage.searchField.waitForDisplayed();
   await bookStorePage.searchField.setValue(text);
-  await browser.pause(3000);
 });
 
-Then(/^I expect to see following books in search results$/, async () => {
-  const booksList = bookStorePage.getBookListText();
-  expect(booksList).to.deep.equal([
-    "Learning JavaScript Design Patterns",
-    "Speaking JavaScript",
-    "Programming JavaScript Applications",
-    "Eloquent JavaScript, Second Edition",
-  ]);
+Then(/^I expect to see following books in search results$/, async (table) => {
+  const expectedValue = [].concat(...table.rows());
+  const actualValue = await bookStorePage.getBookListText();
+  assert.sameMembers(expectedValue, actualValue);
 });
 
-// When(/^I back on previous page$/, async () => {
-//   await browser.back();
-// });
-
-// Then(/^I expect to see all books on the page$/, async () => {
-//   const booksList = bookStorePage.getBookListText();
-//   expect(booksList).to.deep.equal([
-//     "Git Pocket Guide",
-//     "Learning JavaScript Design Patterns",
-//     "Designing Evolvable Web APIs with ASP.NET",
-//     "Speaking JavaScript",
-//     "You Don't Know JS",
-//     "Programming JavaScript Applications",
-//     "Eloquent JavaScript, Second Edition",
-//     "Understanding ECMAScript 6",
-//   ]);
-// });
+When(/^I load "(.*)" page$/, async (text) => {
+  await bookStorePage.open(text);
+});
 
 When(/^I open (.*)$/, async (book) => {
   await bookStorePage.getBookName(book).scrollIntoView();
+  await bookStorePage.getBookName(book).waitForDisplayed();
+  await browser.pause(1500);
   await bookStorePage.getBookName(book).click();
 });
 
 Then(/^I expect to see book with (.*)$/, async (subtitle) => {
   await bookStorePage.getBookISubTitle(subtitle).scrollIntoView();
+  await bookStorePage.getBookISubTitle(subtitle).waitForDisplayed();
   expect(await bookStorePage.getBookISubTitle(subtitle).isDisplayed()).is.equal(
     true
   );
