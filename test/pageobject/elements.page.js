@@ -5,21 +5,12 @@ class ElementsPage extends BasePage {
     return $(".//div[@id='output']");
   }
 
-  async open(text) {
-    const textLowered = text.toLowerCase();
-    return await browser.url(`/${textLowered}`);
-  }
-
   getTextBoxField(data) {
     return $(`#${data}`);
   }
 
   getDataUnderForm(data) {
     return $(`.//p[@id='${data}']`);
-  }
-
-  getSubmitButton(text) {
-    return $(`.//button[text()='${text}']`);
   }
 
   getButton(text) {
