@@ -13,42 +13,32 @@ class BookStorePage extends BasePage {
     return $("#searchBox");
   }
 
-  async validatedISBN(number) {
-    return /^\d{13}$/i.test(number);
-  }
-
   get bookList() {
     return $$("div[class='rt-tbody'] div div div div");
   }
 
-  // async getBookListText() {
-  //   const result = await Promise.all(
-  //     await this.bookList.map(async (element) => {
-  //       return await element.getText();
-  //     })
-  //   );
-  // }
+  async open(text) {
+    const textLowered = text.toLowerCase();
+    return await browser.url(`/${textLowered}`);
+  }
+
+  async validatedISBN(number) {
+    return /^\d{13}$/i.test(number);
+  }
 
   getBookListText() {
-    const booksListArr = [];
-    this.bookList.map((element) => booksListArr.push(element.getText()));
-    return booksListArr;
+    const elements = this.bookList.map((element) => element.getText());
+    return elements;
   }
 
   getBookName(book) {
     return $(`.//span[contains(@id,"see-book-${book}")]`);
   }
 
-  getBookISBN(number) {
-    return $(`.//div[@id='ISBN-wrapper']/div[2]/label[text()="${number}"]`);
-    //return $(`.//label[text()="${number}"]`);
-  }
-
   getBookISubTitle(subtitle) {
     return $(
       `.//div[@id='subtitle-wrapper']/div[2]/label[text()="${subtitle}"]`
     );
-    //return $(`.//label[text()="${subtitle}"]`);
   }
 }
 module.exports = new BookStorePage();
