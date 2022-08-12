@@ -32,17 +32,14 @@ Then(
   async (text) => {
     const handles = await browser.getWindowHandles();
     await browser.switchToWindow(handles[1]);
-    //await browser.pause(3000);
     await browser.closeWindow();
     await browser.switchToWindow(handles[0]);
-    //expect(await windowsPage.allertsText).to.be.contain(text);
     // const alertText = browser.getAlertText();
     // assert.equal(text, alertText);
-    //await browser.pause(3000);
-    // НЕТ АССЕРШЕНА ТУТ!!!!!!!!
+    // await browser.pause(3000);
+    // This windows is broken, cannot make assertion here
   }
 );
-//SC2
 
 Then(
   /^I expect to see modal window opened with "(.*)" title$/,
