@@ -4,6 +4,7 @@ const interactionsPage = require("../pageobject/interactions.page");
 
 When(/^I drag and drop "(.*)" item to 3 slot$/, async (text) => {
   await interactionsPage.getElementFromList(text).waitForDisplayed();
+  await browser.pause(1500);
   await interactionsPage.getElementFromList(text).dragAndDrop({ x: 0, y: 100 });
 });
 
@@ -19,6 +20,7 @@ Then(
 
 When(/^I drag and drop "(.*)" item at the bottom$/, async (text) => {
   await interactionsPage.getElementFromGrid(text).waitForDisplayed();
+  await browser.pause(1500);
   await interactionsPage.getElementFromGrid(text).dragAndDrop({ x: 0, y: 200 });
 });
 
