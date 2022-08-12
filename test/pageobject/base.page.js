@@ -1,5 +1,6 @@
 module.exports = class BasePage {
-  async open() {
-    return await browser.url("/");
+  async open(text) {
+    const textLowered = text.toLowerCase();
+    return await browser.url(`/${textLowered}`);
   }
 };
