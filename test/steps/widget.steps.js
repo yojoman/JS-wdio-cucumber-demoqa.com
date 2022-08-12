@@ -2,18 +2,9 @@ const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
 const widgetPage = require("../pageobject/widget.page");
 
-Then(/^I expect to see "(.*)" tab$/, async (text) => {
-  await widgetPage.getTab(text).waitForDisplayed();
-  expect(await widgetPage.getTab(text).isDisplayed()).to.be.equal(true);
-});
-
 Then(/^I expect to see "(.*)" tab not being clickable$/, async (text) => {
   await widgetPage.getTab(text).waitForDisplayed();
   expect(await widgetPage.getTab(text).isClickable()).to.be.equal(false);
-});
-
-When(/^I click "(.*)" tab$/, async (text) => {
-  await widgetPage.getTab(text).click();
 });
 
 Then(
