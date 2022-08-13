@@ -23,7 +23,7 @@ When(/^I type "(.*)" in search field$/, async (text) => {
   await bookStorePage.searchField.setValue(text);
 });
 
-Then(/^I expect to see following books in search results$/, async (table) => {
+Then(/^I expect to see following books on the page$/, async (table) => {
   const expectedValue = [].concat(...table.rows());
   const actualValue = await bookStorePage.getBookListText();
   assert.sameMembers(expectedValue, actualValue);
@@ -40,10 +40,18 @@ When(/^I open (.*)$/, async (book) => {
   await bookStorePage.getBookName(book).click();
 });
 
-Then(/^I expect to see book with (.*)$/, async (subtitle) => {
-  await bookStorePage.getBookISubTitle(subtitle).scrollIntoView();
-  await bookStorePage.getBookISubTitle(subtitle).waitForDisplayed();
-  expect(await bookStorePage.getBookISubTitle(subtitle).isDisplayed()).is.equal(
+Then(/^I expect to see book with subtitle (.*)$/, async (subtitle) => {
+  await bookStorePage.getBookSubTitle(subtitle).scrollIntoView();
+  await bookStorePage.getBookSubTitle(subtitle).waitForDisplayed();
+  expect(await bookStorePage.getBookSubTitle(subtitle).isDisplayed()).is.equal(
+    true
+  );
+});
+
+Then(/^I expect to see book with isbn (.*)$/, async (isbn) => {
+  await bookStorePage.getBookIsbn(isbn).scrollIntoView();
+  await bookStorePage.getBookIsbn(isbn).waitForDisplayed();
+  expect(await bookStorePage.getBookIsbn(isbn).isDisplayed()).is.equal(
     true
   );
 });
