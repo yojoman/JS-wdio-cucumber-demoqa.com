@@ -1,6 +1,6 @@
 {
-    "name": "js-wdio-cucumber-2",
-    "version": "1.0.0",
+    "name": "js-wdio-cucumber-demoqa.com",
+    "version": "1.0.1",
     "description": "demoqa.com automated testing",
     "main": "index.js",
     "scripts": {
