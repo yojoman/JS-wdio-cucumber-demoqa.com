@@ -35,10 +35,17 @@ class BookStorePage extends BasePage {
     return $(`.//span[contains(@id,"see-book-${book}")]`);
   }
 
-  getBookISubTitle(subtitle) {
+  getBookSubTitle(subtitle) {
     return $(
       `.//div[@id='subtitle-wrapper']/div[2]/label[text()="${subtitle}"]`
     );
   }
+
+  getBookIsbn(isbn) {
+    return $(
+      `.//div[@id='ISBN-wrapper']/div[2]/label[text()='${isbn}']`
+    );
+  }
+
 }
 module.exports = new BookStorePage();
