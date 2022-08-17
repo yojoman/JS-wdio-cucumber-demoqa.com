@@ -1,7 +1,5 @@
-@widget
 Feature: https://demoqa.com widget page
 
-    @tabs
     Scenario: 1. Tabs page functionality
         Given I am on the "Tabs" page
         Then I expect to see "What" tab
@@ -16,18 +14,18 @@ Feature: https://demoqa.com widget page
         When I click "Use" tab
         Then I expect to see "Use" tab contains text starting with "It is a long established fact that a reader will be distracted"
 
-    @menu
     Scenario: 2. Menu page functionality
         Given I am on the "Menu" page
         Then I expect to see "Main Item 1" menu button
         And I expect to see "Main Item 2" menu button
         And I expect to see "Main Item 3" menu button
+        And I expect to see ad banner above website logo
         When I click "Main Item 1" menu button
         Then I expect to be on "https://demoqa.com/menu#" page
         When I click "Main Item 3" menu button
         Then I expect to be on "https://demoqa.com/menu#" page
         When I hover over "Main Item 2" menu button
-        And I click "Sub Item" menu button
+        And I click "Sub Item" submenu button
         Then I expect to be on "https://demoqa.com/menu#" page
         When I hover over "Main Item 2" menu button
         And I hover over "SUB SUB LIST »" menu button
@@ -35,5 +33,6 @@ Feature: https://demoqa.com widget page
         Then I expect to be on "https://demoqa.com/menu#" page
         When I hover over "Main Item 2" menu button
         And I hover over "SUB SUB LIST »" menu button
+        And I hover over "Sub Sub Item 2" menu button
         And I click "Sub Sub Item 2" menu button
         Then I expect to be on "https://demoqa.com/menu#" page
