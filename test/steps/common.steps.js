@@ -32,3 +32,8 @@ Then(/^I expect to see "(.*)" tab$/, async (text) => {
 When(/^I click "(.*)" tab$/, async (text) => {
   await commonPage.getTab(text).click();
 });
+
+Then(/^I expect to see ad banner above website logo$/, async () => {
+  await commonPage.advertisement.waitForDisplayed();
+  expect(await commonPage.advertisement.isDisplayed()).to.be.equal(true);
+});
