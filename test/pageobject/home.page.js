@@ -9,14 +9,6 @@ class HomePage extends BasePage {
     return $("img[alt='Selenium Online Training']");
   }
 
-  get seleniumTrainigRegistrationButton() {
-    return $(".//a[text()='Go To Registration ']");
-  }
-
-  async open() {
-      return await browser.url("/");
-    }
-
   getFooterText(text) {
     return $(`.//span[text()='${text}']`);
   }
@@ -27,6 +19,10 @@ class HomePage extends BasePage {
 
   getTitle(title) {
     return $(`.//div[@class="main-header"][text()="${title}"]`);
+  }
+
+  async open() {
+    return await browser.url("/");
   }
 }
 
