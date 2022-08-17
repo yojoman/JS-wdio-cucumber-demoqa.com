@@ -11,25 +11,25 @@ Given(/^I am on the home page$/, async () => {
   await homePage.mainLogo.waitForDisplayed();
 });
 
-Then(/^I can see logo image$/, async () => {
+Then(/^I expect to see website logo image$/, async () => {
   expect(await homePage.mainLogo.isDisplayed()).to.equal(true);
 });
 
-Then(/^I can see Selenium training image$/, async () => {
+Then(/^I expect to see Selenium training image$/, async () => {
   await homePage.seleniumTrainingLogo.waitForDisplayed();
   expect(await homePage.seleniumTrainingLogo.isDisplayed()).to.equal(true);
 });
 
-Then(/^I can see "(.*)" footer text$/, async (text) => {
+Then(/^I expect to see "(.*)" footer text$/, async (text) => {
   await homePage.getFooterText(text).waitForDisplayed();
   expect(await homePage.getFooterText(text).isDisplayed()).to.equal(true);
 });
 
-Then(/^I can see "(.*)" title$/, async (title) => {
+Then(/^I expect to see "(.*)" title$/, async (title) => {
   expect(await browser.getTitle()).to.equal(title);
 });
 
-When(/^I press site logo$/, async () => {
+When(/^I press website logo$/, async () => {
   await homePage.mainLogo.waitForDisplayed();
   await homePage.mainLogo.click();
 });
@@ -46,17 +46,16 @@ When(/^I press Selenium logo$/, async () => {
 
 Then(/^I expect to be on Selenium page with "(.*)" title$/, async (title) => {
   await browser.switchWindow("https://www.toolsqa.com/selenium-training/");
-  await homePage.seleniumTrainigRegistrationButton.waitForDisplayed();
   expect(await browser.getTitle()).to.equal(title);
 });
 
-When(/^I click on (.*)$/, async (text) => {
+When(/^I click on (.*) button$/, async (text) => {
   await homePage.getButton(text).scrollIntoView();
   await homePage.getButton(text).click();
   await browser.pause(1000);
 });
 
-Then(/^I expect to be on page with (.*)$/, async (title) => {
+Then(/^I expect to be on page with (.*) title$/, async (title) => {
   await homePage.getTitle(title).scrollIntoView();
   expect(await homePage.getTitle(title).isDisplayed()).to.equal(true);
 });
