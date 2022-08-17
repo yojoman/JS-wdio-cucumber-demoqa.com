@@ -1,16 +1,17 @@
-@book_store
+@smoke
 Feature: https://demoqa.com book store page
 
-    @isbn
     Scenario: 1. Book Store page ISBN functionality
         Given I am on the "Books" page
+        And I expect to see ad banner above website logo
         Then I expect to see items on the page
+        And I expect to see "Git Pocket Guide" book
         When I click "Git Pocket Guide" book
         Then I expect ISBN matches defined format
 
-    @search
     Scenario: 2. Book Store page search functionality
         Given I am on the "Books" page
+        Then I expect to see items on the page
         Then I expect to see following books on the page
             | books                                     |
             | Git Pocket Guide                          |
@@ -29,10 +30,9 @@ Feature: https://demoqa.com book store page
             | Programming JavaScript Applications |
             | Eloquent JavaScript, Second Edition |
 
-    @desc
     Scenario Outline: 3. Book description page functionality
         When I load "Books" page
-        And I open <book>
+        And I open book <book>
         Then I expect to see book with subtitle <subtitle>
         And I expect to see book with isbn <isbn>
         When I back on previous page
