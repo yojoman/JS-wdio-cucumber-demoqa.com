@@ -25,10 +25,16 @@ When(/^I click "(.*)" menu button$/, async (text) => {
   await widgetPage.getMenuButton(text).click();
 });
 
+When(/^I click "(.*)" submenu button$/, async (text) => {
+  await widgetPage.getSubItemButton(text).waitForDisplayed();
+  await widgetPage.getSubItemButton(text).click();
+});
+
 Then(/^I expect to be on "(.*)" page$/, async (url) => {
   expect(await browser.getUrl()).to.be.equal(url);
 });
 
 When(/^I hover over "(.*)" menu button$/, async (text) => {
+  await widgetPage.getMenuButton(text).waitForDisplayed();
   await widgetPage.getMenuButton(text).moveTo();
 });
