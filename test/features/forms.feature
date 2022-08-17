@@ -1,4 +1,3 @@
-@forms
 Feature: https://demoqa.com forms page
 
     Scenario: 1. Forms page functionality
@@ -21,7 +20,7 @@ Feature: https://demoqa.com forms page
         When I select Sports, Reading and Music hobbies
         Then I expect to see Sports, Reading and Music hobbies are selected
         When I choose and upload picture
-        When I fill "Route de la Galaise 32, Geneva, Switzerland" in "currentAddress" field
+        And I fill "Route de la Galaise 32, Geneva, Switzerland" in "currentAddress" field
         Then I expect to see "Route de la Galaise 32, Geneva, Switzerland" in "currentAddress" field
         When I push Submit button
         Then I expect to see window with "Thanks for submitting the form" title contains submitted form
