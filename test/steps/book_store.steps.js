@@ -2,20 +2,25 @@ const { When, Then } = require("@wdio/cucumber-framework");
 const { expect, assert } = require("chai");
 const bookStorePage = require("../pageobject/book_store.page");
 
-When(/^I click "(.*)" book$/, async (book) => {
-  await bookStorePage.getBookName(book).scrollIntoView();
-  await bookStorePage.getBookName(book).waitForDisplayed();
-  await bookStorePage.getBookName(book).click();
+Then(/^I expect to see items on the page$/, async () => {
+  await bookStorePage.itemsList.waitForDisplayed();
+  expect(await await bookStorePage.itemsList.isDisplayed()).to.equal(true);
+});
+
+Then(/^I expect to see "(.*)" book$/, async (text) => {
+  await bookStorePage.getBookName(text).waitForDisplayed();
+  expect(await bookStorePage.getBookName(text).isDisplayed()).to.equal(true);
+});
+
+When(/^I click "(.*)" book$/, async (text) => {
+  await bookStorePage.getBookName(text).scrollIntoView();
+  await bookStorePage.getBookName(text).waitForDisplayed();
+  await bookStorePage.getBookName(text).click();
 });
 
 Then(/^I expect ISBN matches defined format$/, async () => {
   const isbnNumber = await bookStorePage.currentPageIsbn.getText();
   expect(await bookStorePage.validatedISBN(isbnNumber)).to.equal(true);
-});
-
-Then(/^I expect to see items on the page$/, async () => {
-  await bookStorePage.itemsList.waitForDisplayed();
-  expect(await await bookStorePage.itemsList.isDisplayed()).to.equal(true);
 });
 
 When(/^I type "(.*)" in search field$/, async (text) => {
@@ -33,7 +38,7 @@ When(/^I load "(.*)" page$/, async (text) => {
   await bookStorePage.open(text);
 });
 
-When(/^I open (.*)$/, async (book) => {
+When(/^I open book (.*)$/, async (book) => {
   await bookStorePage.getBookName(book).scrollIntoView();
   await bookStorePage.getBookName(book).waitForDisplayed();
   await browser.pause(1500);
@@ -51,7 +56,5 @@ Then(/^I expect to see book with subtitle (.*)$/, async (subtitle) => {
 Then(/^I expect to see book with isbn (.*)$/, async (isbn) => {
   await bookStorePage.getBookIsbn(isbn).scrollIntoView();
   await bookStorePage.getBookIsbn(isbn).waitForDisplayed();
-  expect(await bookStorePage.getBookIsbn(isbn).isDisplayed()).is.equal(
-    true
-  );
+  expect(await bookStorePage.getBookIsbn(isbn).isDisplayed()).is.equal(true);
 });
