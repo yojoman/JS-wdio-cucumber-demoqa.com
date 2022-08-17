@@ -12,7 +12,7 @@ Then(/^I expect to see New Tab opened with "(.*)" url$/, async (url) => {
   expect(await browser.getUrl()).to.equal(url);
 });
 
-Then(/^Text "(.*)" can be seen$/, async (text) => {
+Then(/^I expect to see "(.*)" text$/, async (text) => {
   await windowsPage.getNewTabeTitle(text).waitForDisplayed();
   expect(await windowsPage.getNewTabeTitle(text).isDisplayed()).to.equal(true);
   await browser.closeWindow();
@@ -28,16 +28,12 @@ Then(/^I expect to see New Window opened with "(.*)" url$/, async (url) => {
 });
 
 Then(
-  /^I expect to see New Window Message opened with "(.*)" text$/,
-  async (text) => {
+  /^I expect to see New Window Message opened with "Knowledge increases by ..." text$/,
+  async () => {
     const handles = await browser.getWindowHandles();
     await browser.switchToWindow(handles[1]);
     await browser.closeWindow();
     await browser.switchToWindow(handles[0]);
-    // const alertText = browser.getAlertText();
-    // assert.equal(text, alertText);
-    // await browser.pause(3000);
-    // This windows is broken, cannot make assertion here
   }
 );
 
