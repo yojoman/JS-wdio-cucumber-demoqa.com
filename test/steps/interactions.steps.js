@@ -1,6 +1,6 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const interactionsPage = require("../pageobject/interactions.page");
+const interactionsPage = require("../pages/interactions.page");
 
 When(/^I drag and drop "(.*)" item to 3 slot$/, async (text) => {
   await interactionsPage.getElementFromList(text).waitForDisplayed();

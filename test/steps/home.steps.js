@@ -1,6 +1,6 @@
 const { Before, Given, When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const homePage = require("../pageobject/home.page");
+const homePage = require("../pages/home.page");
 
 Before(/^Mazimize browser window$/, async () => {
   await browser.maximizeWindow();

@@ -1,4 +1,4 @@
-const BasePage = require("../pageobject/base.page");
+const BasePage = require("./base.page");
 
 class InteractionsPage extends BasePage {
   getElementFromList(text) {

@@ -10,9 +10,9 @@ Feature: https://demoqa.com home page
         When I press website logo
         Then I expect to be returned on main page
         When I press Selenium logo
-        Then I expect to be on Selenium page with "Just a moment..." title
+        Then I expect to be on Selenium page with "Tools QA - Selenium Training" title
 
-    Scenario Outline: 2. All buttons can be clicked and open corresponding pages
+    Scenario Outline: 2. <button> button can be clicked and open corresponding pages
         Given I am on the home page
         When I click on <button> button
         Then I expect to be on page with <title> title

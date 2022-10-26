@@ -1,6 +1,6 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const commonPage = require("../pageobject/common.page");
+const commonPage = require("../pages/common.page");
 
 Given(/^I am on the "(.*)" page$/, async (text) => {
   await commonPage.open(text);
@@ -33,7 +33,3 @@ When(/^I click "(.*)" tab$/, async (text) => {
   await commonPage.getTab(text).click();
 });
 
-Then(/^I expect to see ad banner above website logo$/, async () => {
-  await commonPage.advertisement.waitForDisplayed();
-  expect(await commonPage.advertisement.isDisplayed()).to.be.equal(true);
-});

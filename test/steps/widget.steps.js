@@ -1,6 +1,6 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const widgetPage = require("../pageobject/widget.page");
+const widgetPage = require("../pages/widget.page");
 
 Then(/^I expect to see "(.*)" tab not being clickable$/, async (text) => {
   await widgetPage.getTab(text).waitForDisplayed();

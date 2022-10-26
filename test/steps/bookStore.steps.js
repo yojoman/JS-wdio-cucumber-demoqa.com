@@ -1,6 +1,6 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect, assert } = require("chai");
-const bookStorePage = require("../pageobject/book_store.page");
+const bookStorePage = require("../pages/bookStore.page");
 
 Then(/^I expect to see items on the page$/, async () => {
   await bookStorePage.itemsList.waitForDisplayed();

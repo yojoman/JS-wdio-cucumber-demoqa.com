@@ -1,6 +1,6 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const elementsPage = require("../pageobject/elements.page");
+const elementsPage = require("../pages/elements.page");
 
 When(/^I fill inavalid data "(.*)" in "(.*)" field$/, async (data, field) => {
   await elementsPage.getTextBoxField(field).waitForDisplayed();

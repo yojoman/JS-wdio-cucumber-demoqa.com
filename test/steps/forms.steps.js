@@ -1,6 +1,6 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const formsPage = require("../pageobject/forms.page");
+const formsPage = require("../pages/forms.page");
 
 Then(/^I expect to see Student Registration Form$/, async () => {
   expect(await formsPage.formTitle.isDisplayed()).to.be.equal(true);
@@ -56,7 +56,7 @@ Then(
 );
 
 When(/^I choose and upload picture$/, async () => {
-  const filePath = await browser.uploadFile("test/resources/js_logo.png");
+  const filePath = await browser.uploadFile("test/resources/logo.png");
   await formsPage.chooseFileButton.setValue(filePath);
 });
 

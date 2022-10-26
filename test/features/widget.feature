@@ -19,7 +19,6 @@ Feature: https://demoqa.com widget page
         Then I expect to see "Main Item 1" menu button
         And I expect to see "Main Item 2" menu button
         And I expect to see "Main Item 3" menu button
-        And I expect to see ad banner above website logo
         When I click "Main Item 1" menu button
         Then I expect to be on "https://demoqa.com/menu#" page
         When I click "Main Item 3" menu button

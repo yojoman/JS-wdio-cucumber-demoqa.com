@@ -1,6 +1,6 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const windowsPage = require("../pageobject/windows.page");
+const windowsPage = require("../pages/windows.page");
 
 Then(/^I expect to see "(.*)" button$/, async (button) => {
   await windowsPage.getButton(button).waitForDisplayed();

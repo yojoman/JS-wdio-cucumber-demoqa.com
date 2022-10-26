@@ -22,7 +22,6 @@ Feature: https://demoqa.com elements page
 
     Scenario: 2. Buttons page functionality
         Given I am on the "Buttons" page
-        And I expect to see ad banner above website logo
         When I double click on "Double Click Me" button
         Then I expect to see "You have done a double click" message
         When I right click on "Right Click Me" button

@@ -3,7 +3,6 @@ Feature: https://demoqa.com book store page
 
     Scenario: 1. Book Store page ISBN functionality
         Given I am on the "Books" page
-        And I expect to see ad banner above website logo
         Then I expect to see items on the page
         And I expect to see "Git Pocket Guide" book
         When I click "Git Pocket Guide" book
@@ -30,7 +29,7 @@ Feature: https://demoqa.com book store page
             | Programming JavaScript Applications |
             | Eloquent JavaScript, Second Edition |
 
-    Scenario Outline: 3. Book description page functionality
+    Scenario Outline: 3. <book> book description page functionality
         When I load "Books" page
         And I open book <book>
         Then I expect to see book with subtitle <subtitle>

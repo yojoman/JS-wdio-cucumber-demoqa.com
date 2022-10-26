@@ -4,7 +4,8 @@ Automated scenarios in JS for https://demoqa.com/ using Node.js + WebdriverIO + 
 
 Running:
 
-1. use "npm test" command to run all tests.
-2. use "npm test -- --cucumberOpts.tagExpression='@smoke'" to run particular test.
-3. use "npm run allure_generate" to generate a report.
-4. use "npm run allure_open" to open the report.
+1. clone the repository.
+2. use "npm install" command to setup all dependencies.
+3. use "npm test" command to run all tests.
+4. use "npm test -- --maxInstances='2'" command to define a number of browser instances to run tests.
+5. use "npm test -- --cucumberOpts.tagExpression='@smoke'" command to run a test with a particular tag.

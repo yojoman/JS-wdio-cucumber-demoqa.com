@@ -41,7 +41,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 5,
+  maxInstances: 3,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -131,17 +131,16 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
 
   reporters: [
+    "spec",
     [
-      "allure",
+      "json",
       {
-        outputDir: "reports/allure-results",
-
-        disableWebdriverStepsReporting: true,
-
-        disableWebdriverScreenshotsReporting: true,
+        outputDir: "./test/reports",
+        outputFileFormat: function (opts) {
+          return `report-${opts.cid}.json`;
+        },
       },
     ],
   ],
@@ -328,8 +327,12 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  // onComplete: function(exitCode, config, capabilities, results) {
-  // },
+
+  onComplete: function (exitCode, config, capabilities, results) {
+    const mergeResults = require("wdio-json-reporter/mergeResults");
+    mergeResults("./test/reports", "report-*", "merged-report.json");
+  },
+
   /**
    * Gets executed when a refresh happens.
    * @param {String} oldSessionId session ID of the old session
