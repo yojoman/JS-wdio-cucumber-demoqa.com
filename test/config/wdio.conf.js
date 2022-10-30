@@ -1,3 +1,6 @@
+const report = require("multiple-cucumber-html-reporter");
+const cucumberJson = require("wdio-cucumberjs-json-reporter").default;
+
 exports.config = {
   //
   // ====================
@@ -135,12 +138,10 @@ exports.config = {
   reporters: [
     "spec",
     [
-      "json",
+      "cucumberjs-json",
       {
-        outputDir: "./test/reports",
-        outputFileFormat: function (opts) {
-          return `report-${opts.cid}.json`;
-        },
+        jsonFolder: "./test/reports",
+        language: "en",
       },
     ],
   ],
@@ -282,8 +283,10 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  // afterScenario: function (world, result, context) {
-  // },
+  afterScenario: async function (world, result, context) {
+    cucumberJson.attach(await browser.takeScreenshot(), "image/png");
+  },
+
   /**
    *
    * Runs after a Cucumber Feature.
@@ -328,9 +331,15 @@ exports.config = {
    * @param {<Object>} results object containing test results
    */
 
-  onComplete: function (exitCode, config, capabilities, results) {
-    const mergeResults = require("wdio-json-reporter/mergeResults");
-    mergeResults("./test/reports", "report-*", "merged-report.json");
+  onComplete: () => {
+    report.generate({
+      jsonDir: "./test/reports",
+      reportPath: "./test/reports",
+      saveCollectedJSON: true,
+      reportName: "demoqa.com HTML report",
+      displayDuration: true,
+      displayReportTime: true,
+    });
   },
 
   /**

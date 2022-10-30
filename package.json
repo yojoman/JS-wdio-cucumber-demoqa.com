@@ -1,16 +1,17 @@
 {
   "name": "js-wdio-cucumber-demoqa.com",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "demoqa.com automated testing using JS",
   "main": "index.js",
   "scripts": {
-    "pretest": "node ./test/utils/deleteReport.js",
-    "test": "wdio run ./test/config/wdio.conf.js"
+    "pretest": "node ./test/utils/deleteReportsFolder.js",
+    "test": "wdio run ./test/config/wdio.conf.js",
+    "report:open": "start ./test/reports/index.html",
+    "convert": "node ./test/utils/convertJsonReportToXml.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yojoman/JS-wdio-cucumber-demoqa.com.git"
-    
   },
   "author": "Pavel Abramuk",
   "license": "ISC",
@@ -23,12 +24,14 @@
     "@wdio/cucumber-framework": "^7.25.1",
     "@wdio/local-runner": "^7.25.2",
     "@wdio/spec-reporter": "^7.25.1",
-    "chromedriver": "^106.0.1",
-    "wdio-chromedriver-service": "^8.0.0",
-    "wdio-json-reporter": "^3.0.0"
+    "chromedriver": "^107.0.0",
+    "wdio-chromedriver-service": "^8.0.0"
   },
   "dependencies": {
     "chai": "^4.3.6",
-    "fs-extra": "^10.1.0"
+    "cucumber-junit-convert": "^2.1.1",
+    "fs-extra": "^10.1.0",
+    "multiple-cucumber-html-reporter": "^3.0.1",
+    "wdio-cucumberjs-json-reporter": "^4.4.3"
   }
 }
