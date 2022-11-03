@@ -6,8 +6,7 @@
   "scripts": {
     "pretest": "node ./test/utils/deleteReportsFolder.js",
     "test": "wdio run ./test/config/wdio.conf.js",
-    "report:open": "start ./test/reports/index.html",
-    "report:convert": "node ./test/utils/convertJsonReportToXml.js"
+    "report:open": "start ./test/reports/index.html"
   },
   "repository": {
     "type": "git",

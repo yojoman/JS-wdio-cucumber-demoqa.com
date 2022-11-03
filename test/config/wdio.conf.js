@@ -1,5 +1,6 @@
 const report = require("multiple-cucumber-html-reporter");
 const cucumberJson = require("wdio-cucumberjs-json-reporter").default;
+const cucumberJunitConvert = require("cucumber-junit-convert");
 
 exports.config = {
   //
@@ -331,17 +332,27 @@ exports.config = {
    * @param {<Object>} results object containing test results
    */
 
-  onComplete: () => {
-    report.generate({
-      jsonDir: "./test/reports",
-      reportPath: "./test/reports",
-      saveCollectedJSON: true,
-      reportName: "demoqa.com HTML report",
-      displayDuration: true,
-      displayReportTime: true,
-    });
-  },
+  onComplete: [
+    () => {
+      report.generate({
+        jsonDir: "./test/reports",
+        reportPath: "./test/reports",
+        saveCollectedJSON: true,
+        reportName: "demoqa.com HTML report",
+        displayDuration: true,
+        displayReportTime: true,
+      });
+    },
 
+    () => {
+      const options = {
+        inputJsonFile: "./test/reports/merged-output.json",
+        outputXmlFile: "./test/reports/merged-output.xml",
+        featureNameAsClassName: true,
+      };
+      cucumberJunitConvert.convert(options);
+    },
+  ],
   /**
    * Gets executed when a refresh happens.
    * @param {String} oldSessionId session ID of the old session

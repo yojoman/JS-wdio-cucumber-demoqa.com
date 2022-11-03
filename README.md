@@ -9,4 +9,3 @@ Running:
 - use `npm test -- --maxInstances='2'` command to define a number of browser instances to run tests.
 - use `npm test -- --cucumberOpts.tagExpression='@smoke'` command to run a test with a particular tag.
 - use `npm run report:open` commant to open HTML report.
-- use `npm run report:convert` to convert JSON report to XML format.
